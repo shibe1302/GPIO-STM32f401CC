@@ -391,7 +391,7 @@ LOAD C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.
                 0x08000000                g_pfnVectors
                 0x08000194                        . = ALIGN (0x4)
 
-.text           0x08000194      0x1e0
+.text           0x08000194      0x25c
                 0x08000194                        . = ALIGN (0x4)
  *(.text)
  *(.text*)
@@ -404,174 +404,177 @@ LOAD C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.
  .text.frame_dummy
                 0x080001fc       0x24 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  .text.enable_gpio_clock
-                0x08000220       0x14 build/main.o
+                0x08000220       0x68 build/main.o
                 0x08000220                enable_gpio_clock
- .text.delay1   0x08000234       0x16 build/main.o
-                0x08000234                delay1
- *fill*         0x0800024a        0x2 
+ .text.delay1   0x08000288       0x16 build/main.o
+                0x08000288                delay1
+ *fill*         0x0800029e        0x2 
  .text.init_pin
-                0x0800024c       0x18 build/main.o
-                0x0800024c                init_pin
- .text.led_on   0x08000264       0x18 build/main.o
-                0x08000264                led_on
- .text.led_off  0x0800027c       0x18 build/main.o
-                0x0800027c                led_off
+                0x080002a0       0x38 build/main.o
+                0x080002a0                init_pin
+ .text.led_on   0x080002d8       0x14 build/main.o
+                0x080002d8                led_on
+ .text.led_off  0x080002ec       0x14 build/main.o
+                0x080002ec                led_off
+ .text.led_duoi
+                0x08000300       0x28 build/main.o
+                0x08000300                led_duoi
  .text.startup.main
-                0x08000294       0x28 build/main.o
-                0x08000294                main
+                0x08000328       0x10 build/main.o
+                0x08000328                main
  .text.SystemInit
-                0x080002bc        0x2 build/system_stm32f4xx.o
-                0x080002bc                SystemInit
- *fill*         0x080002be        0x2 
+                0x08000338        0x2 build/system_stm32f4xx.o
+                0x08000338                SystemInit
+ *fill*         0x0800033a        0x2 
  .text.Reset_Handler
-                0x080002c0       0x50 build/startup_stm32f401xc.o
-                0x080002c0                Reset_Handler
+                0x0800033c       0x50 build/startup_stm32f401xc.o
+                0x0800033c                Reset_Handler
  .text.Default_Handler
-                0x08000310        0x2 build/startup_stm32f401xc.o
-                0x08000310                RTC_Alarm_IRQHandler
-                0x08000310                EXTI2_IRQHandler
-                0x08000310                DebugMon_Handler
-                0x08000310                SPI4_IRQHandler
-                0x08000310                TIM1_CC_IRQHandler
-                0x08000310                DMA2_Stream5_IRQHandler
-                0x08000310                HardFault_Handler
-                0x08000310                DMA1_Stream5_IRQHandler
-                0x08000310                SysTick_Handler
-                0x08000310                PVD_IRQHandler
-                0x08000310                SDIO_IRQHandler
-                0x08000310                TAMP_STAMP_IRQHandler
-                0x08000310                PendSV_Handler
-                0x08000310                NMI_Handler
-                0x08000310                EXTI3_IRQHandler
-                0x08000310                TIM1_UP_TIM10_IRQHandler
-                0x08000310                I2C3_ER_IRQHandler
-                0x08000310                EXTI0_IRQHandler
-                0x08000310                I2C2_EV_IRQHandler
-                0x08000310                DMA1_Stream2_IRQHandler
-                0x08000310                FPU_IRQHandler
-                0x08000310                UsageFault_Handler
-                0x08000310                DMA2_Stream2_IRQHandler
-                0x08000310                SPI1_IRQHandler
-                0x08000310                TIM1_BRK_TIM9_IRQHandler
-                0x08000310                DMA2_Stream3_IRQHandler
-                0x08000310                USART6_IRQHandler
-                0x08000310                DMA2_Stream0_IRQHandler
-                0x08000310                TIM4_IRQHandler
-                0x08000310                I2C1_EV_IRQHandler
-                0x08000310                DMA1_Stream6_IRQHandler
-                0x08000310                DMA1_Stream1_IRQHandler
-                0x08000310                TIM3_IRQHandler
-                0x08000310                RCC_IRQHandler
-                0x08000310                Default_Handler
-                0x08000310                EXTI15_10_IRQHandler
-                0x08000310                ADC_IRQHandler
-                0x08000310                DMA1_Stream7_IRQHandler
-                0x08000310                TIM5_IRQHandler
-                0x08000310                DMA2_Stream7_IRQHandler
-                0x08000310                I2C3_EV_IRQHandler
-                0x08000310                EXTI9_5_IRQHandler
-                0x08000310                RTC_WKUP_IRQHandler
-                0x08000310                SPI2_IRQHandler
-                0x08000310                MemManage_Handler
-                0x08000310                DMA1_Stream0_IRQHandler
-                0x08000310                SVC_Handler
-                0x08000310                EXTI4_IRQHandler
-                0x08000310                WWDG_IRQHandler
-                0x08000310                TIM2_IRQHandler
-                0x08000310                OTG_FS_WKUP_IRQHandler
-                0x08000310                TIM1_TRG_COM_TIM11_IRQHandler
-                0x08000310                EXTI1_IRQHandler
-                0x08000310                USART2_IRQHandler
-                0x08000310                I2C2_ER_IRQHandler
-                0x08000310                DMA2_Stream1_IRQHandler
-                0x08000310                FLASH_IRQHandler
-                0x08000310                DMA2_Stream4_IRQHandler
-                0x08000310                BusFault_Handler
-                0x08000310                USART1_IRQHandler
-                0x08000310                OTG_FS_IRQHandler
-                0x08000310                SPI3_IRQHandler
-                0x08000310                DMA1_Stream4_IRQHandler
-                0x08000310                I2C1_ER_IRQHandler
-                0x08000310                DMA2_Stream6_IRQHandler
-                0x08000310                DMA1_Stream3_IRQHandler
- *fill*         0x08000312        0x2 
+                0x0800038c        0x2 build/startup_stm32f401xc.o
+                0x0800038c                RTC_Alarm_IRQHandler
+                0x0800038c                EXTI2_IRQHandler
+                0x0800038c                DebugMon_Handler
+                0x0800038c                SPI4_IRQHandler
+                0x0800038c                TIM1_CC_IRQHandler
+                0x0800038c                DMA2_Stream5_IRQHandler
+                0x0800038c                HardFault_Handler
+                0x0800038c                DMA1_Stream5_IRQHandler
+                0x0800038c                SysTick_Handler
+                0x0800038c                PVD_IRQHandler
+                0x0800038c                SDIO_IRQHandler
+                0x0800038c                TAMP_STAMP_IRQHandler
+                0x0800038c                PendSV_Handler
+                0x0800038c                NMI_Handler
+                0x0800038c                EXTI3_IRQHandler
+                0x0800038c                TIM1_UP_TIM10_IRQHandler
+                0x0800038c                I2C3_ER_IRQHandler
+                0x0800038c                EXTI0_IRQHandler
+                0x0800038c                I2C2_EV_IRQHandler
+                0x0800038c                DMA1_Stream2_IRQHandler
+                0x0800038c                FPU_IRQHandler
+                0x0800038c                UsageFault_Handler
+                0x0800038c                DMA2_Stream2_IRQHandler
+                0x0800038c                SPI1_IRQHandler
+                0x0800038c                TIM1_BRK_TIM9_IRQHandler
+                0x0800038c                DMA2_Stream3_IRQHandler
+                0x0800038c                USART6_IRQHandler
+                0x0800038c                DMA2_Stream0_IRQHandler
+                0x0800038c                TIM4_IRQHandler
+                0x0800038c                I2C1_EV_IRQHandler
+                0x0800038c                DMA1_Stream6_IRQHandler
+                0x0800038c                DMA1_Stream1_IRQHandler
+                0x0800038c                TIM3_IRQHandler
+                0x0800038c                RCC_IRQHandler
+                0x0800038c                Default_Handler
+                0x0800038c                EXTI15_10_IRQHandler
+                0x0800038c                ADC_IRQHandler
+                0x0800038c                DMA1_Stream7_IRQHandler
+                0x0800038c                TIM5_IRQHandler
+                0x0800038c                DMA2_Stream7_IRQHandler
+                0x0800038c                I2C3_EV_IRQHandler
+                0x0800038c                EXTI9_5_IRQHandler
+                0x0800038c                RTC_WKUP_IRQHandler
+                0x0800038c                SPI2_IRQHandler
+                0x0800038c                MemManage_Handler
+                0x0800038c                DMA1_Stream0_IRQHandler
+                0x0800038c                SVC_Handler
+                0x0800038c                EXTI4_IRQHandler
+                0x0800038c                WWDG_IRQHandler
+                0x0800038c                TIM2_IRQHandler
+                0x0800038c                OTG_FS_WKUP_IRQHandler
+                0x0800038c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0800038c                EXTI1_IRQHandler
+                0x0800038c                USART2_IRQHandler
+                0x0800038c                I2C2_ER_IRQHandler
+                0x0800038c                DMA2_Stream1_IRQHandler
+                0x0800038c                FLASH_IRQHandler
+                0x0800038c                DMA2_Stream4_IRQHandler
+                0x0800038c                BusFault_Handler
+                0x0800038c                USART1_IRQHandler
+                0x0800038c                OTG_FS_IRQHandler
+                0x0800038c                SPI3_IRQHandler
+                0x0800038c                DMA1_Stream4_IRQHandler
+                0x0800038c                I2C1_ER_IRQHandler
+                0x0800038c                DMA2_Stream6_IRQHandler
+                0x0800038c                DMA1_Stream3_IRQHandler
+ *fill*         0x0800038e        0x2 
  .text.__libc_init_array
-                0x08000314       0x48 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
-                0x08000314                __libc_init_array
+                0x08000390       0x48 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x08000390                __libc_init_array
  *(.glue_7)
- .glue_7        0x0800035c        0x0 linker stubs
+ .glue_7        0x080003d8        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800035c        0x0 linker stubs
+ .glue_7t       0x080003d8        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800035c        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x080003d8        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0800035c        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800035c                _init
- .init          0x08000360        0x8 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x080003d8        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x080003d8                _init
+ .init          0x080003dc        0x8 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08000368        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x08000368                _fini
- .fini          0x0800036c        0x8 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08000374                        . = ALIGN (0x4)
-                0x08000374                        _etext = .
+ .fini          0x080003e4        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x080003e4                _fini
+ .fini          0x080003e8        0x8 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
+                0x080003f0                        . = ALIGN (0x4)
+                0x080003f0                        _etext = .
 
-.vfp11_veneer   0x08000374        0x0
- .vfp11_veneer  0x08000374        0x0 linker stubs
+.vfp11_veneer   0x080003f0        0x0
+ .vfp11_veneer  0x080003f0        0x0 linker stubs
 
-.v4_bx          0x08000374        0x0
- .v4_bx         0x08000374        0x0 linker stubs
+.v4_bx          0x080003f0        0x0
+ .v4_bx         0x080003f0        0x0 linker stubs
 
-.iplt           0x08000374        0x0
- .iplt          0x08000374        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x080003f0        0x0
+ .iplt          0x080003f0        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08000374        0x0
-                0x08000374                        . = ALIGN (0x4)
+.rodata         0x080003f0        0x0
+                0x080003f0                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x08000374                        . = ALIGN (0x4)
+                0x080003f0                        . = ALIGN (0x4)
 
-.ARM.extab      0x08000374        0x0
-                0x08000374                        . = ALIGN (0x4)
+.ARM.extab      0x080003f0        0x0
+                0x080003f0                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08000374                        . = ALIGN (0x4)
+                0x080003f0                        . = ALIGN (0x4)
 
-.ARM            0x08000374        0x0
-                0x08000374                        . = ALIGN (0x4)
-                0x08000374                        __exidx_start = .
+.ARM            0x080003f0        0x0
+                0x080003f0                        . = ALIGN (0x4)
+                0x080003f0                        __exidx_start = .
  *(.ARM.exidx*)
-                0x08000374                        __exidx_end = .
-                0x08000374                        . = ALIGN (0x4)
+                0x080003f0                        __exidx_end = .
+                0x080003f0                        . = ALIGN (0x4)
 
-.preinit_array  0x08000374        0x0
-                0x08000374                        . = ALIGN (0x4)
-                0x08000374                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x080003f0        0x0
+                0x080003f0                        . = ALIGN (0x4)
+                0x080003f0                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08000374                        PROVIDE (__preinit_array_end = .)
-                0x08000374                        . = ALIGN (0x4)
+                0x080003f0                        PROVIDE (__preinit_array_end = .)
+                0x080003f0                        . = ALIGN (0x4)
 
-.init_array     0x08000374        0x4
-                0x08000374                        . = ALIGN (0x4)
-                0x08000374                        PROVIDE (__init_array_start = .)
+.init_array     0x080003f0        0x4
+                0x080003f0                        . = ALIGN (0x4)
+                0x080003f0                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08000374        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08000378                        PROVIDE (__init_array_end = .)
-                0x08000378                        . = ALIGN (0x4)
+ .init_array    0x080003f0        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x080003f4                        PROVIDE (__init_array_end = .)
+                0x080003f4                        . = ALIGN (0x4)
 
-.fini_array     0x08000378        0x4
-                0x08000378                        . = ALIGN (0x4)
+.fini_array     0x080003f4        0x4
+                0x080003f4                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08000378        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x080003f4        0x4 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0800037c                        . = ALIGN (0x4)
-                0x0800037c                        _sidata = LOADADDR (.data)
+                0x080003f8                        . = ALIGN (0x4)
+                0x080003f8                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800037c        0x0
- .rel.iplt      0x0800037c        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x080003f8        0x0
+ .rel.iplt      0x080003f8        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000        0x0 load address 0x0800037c
+.data           0x20000000        0x0 load address 0x080003f8
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -582,17 +585,17 @@ LOAD C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.
                 0x20000000                        _edata = .
 
 .tm_clone_table
-                0x20000000        0x0 load address 0x0800037c
+                0x20000000        0x0 load address 0x080003f8
  .tm_clone_table
                 0x20000000        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  .tm_clone_table
                 0x20000000        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtend.o
 
-.igot.plt       0x20000000        0x0 load address 0x0800037c
+.igot.plt       0x20000000        0x0 load address 0x080003f8
  .igot.plt      0x20000000        0x0 C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x20000000                        . = ALIGN (0x4)
 
-.bss            0x20000000       0x1c load address 0x0800037c
+.bss            0x20000000       0x1c load address 0x080003f8
                 0x20000000                        _sbss = .
                 0x20000000                        __bss_start__ = _sbss
  *(.bss)
@@ -607,7 +610,7 @@ LOAD C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.
                 0x2000001c                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x2000001c      0x604 load address 0x0800037c
+                0x2000001c      0x604 load address 0x080003f8
                 0x20000020                        . = ALIGN (0x8)
  *fill*         0x2000001c        0x4 
                 0x20000020                        PROVIDE (end = .)
@@ -652,41 +655,8 @@ LOAD C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.
                                  0x46 (size before relaxing)
  .comment       0x00000045       0x46 build/system_stm32f4xx.o
 
-.debug_info     0x00000000      0x292
- .debug_info    0x00000000      0x1c5 build/main.o
- .debug_info    0x000001c5       0xcd build/system_stm32f4xx.o
-
-.debug_abbrev   0x00000000      0x171
- .debug_abbrev  0x00000000       0xe8 build/main.o
- .debug_abbrev  0x000000e8       0x89 build/system_stm32f4xx.o
-
-.debug_loc      0x00000000      0x10e
- .debug_loc     0x00000000       0xe2 build/main.o
- .debug_loc     0x000000e2       0x2c build/system_stm32f4xx.o
-
-.debug_aranges  0x00000000       0x70
- .debug_aranges
-                0x00000000       0x48 build/main.o
- .debug_aranges
-                0x00000048       0x28 build/system_stm32f4xx.o
-
-.debug_ranges   0x00000000       0x50
- .debug_ranges  0x00000000       0x38 build/main.o
- .debug_ranges  0x00000038       0x18 build/system_stm32f4xx.o
-
-.debug_line     0x00000000      0x233
- .debug_line    0x00000000      0x106 build/main.o
- .debug_line    0x00000106      0x12d build/system_stm32f4xx.o
-
-.debug_str      0x00000000      0x1bb
- .debug_str     0x00000000      0x1bb build/main.o
-                                0x1b1 (size before relaxing)
- .debug_str     0x000001bb      0x1a2 build/system_stm32f4xx.o
-
-.debug_frame    0x00000000       0xdc
- .debug_frame   0x00000000       0x78 build/main.o
- .debug_frame   0x00000078       0x38 build/system_stm32f4xx.o
- .debug_frame   0x000000b0       0x2c C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+.debug_frame    0x00000000       0x2c
+ .debug_frame   0x00000000       0x2c C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
 
 Cross Reference Table
 
@@ -910,6 +880,7 @@ fflush                                            C:/Program Files (x86)/arm-non
 g_pfnVectors                                      build/startup_stm32f401xc.o
 hardware_init_hook                                C:/Program Files (x86)/arm-none-eabi/shiba/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crt0.o
 init_pin                                          build/main.o
+led_duoi                                          build/main.o
 led_off                                           build/main.o
 led_on                                            build/main.o
 main                                              build/main.o

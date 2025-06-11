@@ -1,0 +1,8 @@
+device STM32F401CC
+si SWD
+speed 4000
+connect under reset
+loadfile build/led_blink.hex
+r
+g
+exit

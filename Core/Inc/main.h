@@ -6,8 +6,13 @@
 #include <stdint.h>
 
 /* clock */
-#define BASE_RCC 0x40023800U
-#define RCC_AHB1ENR (BASE_RCC + 0x30U)
+#define RCC_BASE 0x40023800U
+#define RCC_CR (RCC_BASE + 0x00)
+#define RCC_PLLCFGR (RCC_BASE + 0x04)
+#define RCC_CFGR (RCC_BASE + 0x08)
+#define RCC_AHB1ENR (RCC_BASE + 0x30)
+/* clock - end */
+#define REG32(addr) (*(unsigned long int *)(addr))
 
 /* USER CODE END EM */
 #define BASE_GPIOA 0x40020000U
@@ -20,7 +25,12 @@
 #define GPIO_MODER_ANALOG 0x03U
 
 #define GPIOC_BSRR (BASE_GPIOC + 0x18U) // GPIO port set/reset register
+#define GPIOA_BSRR (BASE_GPIOA + 0x18U) // GPIO port set/reset register
 
+#define GPIOC_OSPEEDR (BASE_GPIOC + 0x08U) // GPIO port output speed register
+#define GPIOA_OSPEEDR (BASE_GPIOA + 0x08U) // GPIO port output speed register
+
+#define FLASH_ACR 0x40023C00U // Flash access control register
 #define SET_BIT(REG, BIT) ((REG) |= (BIT))
 
 #define CLEAR_BIT(REG, BIT) ((REG) &= ~(BIT))

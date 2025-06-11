@@ -1,90 +1,68 @@
-
+# Project name
 TARGET = led_blink
-DEBUG = 1
 
-OPT = -Os
-
+# Build configuration
 BUILD_DIR = build
 C_SOURCES = Core/Src/main.c \
-Core/Src/system_stm32f4xx.c
-
-# ASM sources - startup file
+            Core/Src/system_stm32f4xx.c
 ASM_SOURCES = startup_stm32f401xc.s
 
+# Toolchain configuration
 PREFIX = arm-none-eabi-
-ifdef GCC_PATH
-CC = $(GCC_PATH)/$(PREFIX)gcc
-AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
-CP = $(GCC_PATH)/$(PREFIX)objcopy
-SZ = $(GCC_PATH)/$(PREFIX)size
-else
 CC = $(PREFIX)gcc
 AS = $(PREFIX)gcc -x assembler-with-cpp
 CP = $(PREFIX)objcopy
 SZ = $(PREFIX)size
-endif
 HEX = $(CP) -O ihex
+ELF = $(CP) -O elf32-littlearm
+
+# MCU configuration
 CPU = -mcpu=cortex-m4
 FPU = -mfpu=fpv4-sp-d16
 FLOAT-ABI = -mfloat-abi=hard
-
-# mcu
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
+# Compiler flags
 C_DEFS = -DSTM32F401xC
-
 C_INCLUDES = -I. -ICore/Inc
-
-# compile gcc flags
-ASFLAGS = $(MCU) $(OPT) -Wall -fdata-sections -ffunction-sections
-
-CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
-
-ifeq ($(DEBUG), 1)
-CFLAGS += -g -gdwarf-2
-endif
-
-CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
-
+CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) -Wall -Os -fdata-sections -ffunction-sections
+ASFLAGS = $(CFLAGS)
 LDSCRIPT = STM32F401XX_FLASH.ld
+LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) -lc -lm -lnosys -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
+# Object files
+OBJECTS = $(addprefix $(BUILD_DIR)/, $(notdir $(C_SOURCES:.c=.o)))
+OBJECTS += $(addprefix $(BUILD_DIR)/, $(notdir $(ASM_SOURCES:.s=.o)))
 
-LIBS = -lc -lm -lnosys 
-LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+# Build rules
+all: clean $(BUILD_DIR) $(BUILD_DIR)/$(TARGET).hex flash
 
+$(BUILD_DIR):
+	mkdir -p $@
 
-
-all: $(BUILD_DIR)/$(TARGET).hex
-
-OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
-vpath %.c $(sort $(dir $(C_SOURCES)))
-
-
-OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
-vpath %.s $(sort $(dir $(ASM_SOURCES)))
-
-$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) 
+$(BUILD_DIR)/%.o: Core/Src/%.c | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) $< -o $@
 
-$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: %.s | $(BUILD_DIR)
 	$(AS) -c $(ASFLAGS) $< -o $@
 
-$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
+$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS)
 	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	$(SZ) $@
 
-$(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
+$(BUILD_DIR)/$(TARGET).hex: $(BUILD_DIR)/$(TARGET).elf
 	$(HEX) $< $@
 	@echo "Hex file generated: $@"
 
-$(BUILD_DIR):
-	mkdir $@
+$(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
+	$(CP) -O binary $< $@
+	@echo "Binary file generated: $@"
 
-c:
-	-rm -fR $(BUILD_DIR)
+clean:
+	rm -rf $(BUILD_DIR)
 
+flash: $(BUILD_DIR)/$(TARGET).hex
+	JLink.exe -CommanderScript flash.jlink
 
--include $(wildcard $(BUILD_DIR)/*.d)
-
-.PHONY: all clean erase flash verify flash-all reset debug size help
+.PHONY: all clean flash
 
